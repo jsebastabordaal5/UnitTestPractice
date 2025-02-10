@@ -7,12 +7,11 @@ Elabore una clase que supla las siguientes responsabilidades
 Para una compra con tarjeta de crédito, debe calcular el total de intereses que se pagarán en total antes de cancelar el
 total de la deuda, dado el valor de la compra, el número de cuotas y la tasa de interés vigente
 
-
 La formula para calcular el total de intereses esta dado por:
 
-![alt text](assets/formula_total_interes.png)
+![formula total interes](assets/formula_total_interes.png)
 
-Donde: 
+Donde:
 
 TI = Total intereses
 
@@ -22,10 +21,9 @@ N = Número de cuotas
 
 P = Monto de la compra
 
-
 La formula para calcular la cuota mensual esta dada por:
 
-![alt text](assets/formula_cuota_mensual.png)
+![formula cuota mensual](assets/formula_cuota_mensual.png)
 
 Donde:
 
@@ -36,8 +34,6 @@ P = Monto de la compra
 I = Tasa de interes mensual
 
 N = Número de cuotas
-
-
 
 ## Casos de prueba
 
@@ -61,9 +57,9 @@ N = Número de cuotas
 
 ### Caso de prueba #4: tasa de usura
 
-| Monto | Tasa  | Cuotas | Total Intereses                                |
-|-------|-------|--------|------------------------------------------------|
-| 50000 | 12.4% | 60     | Error: La tasa anual de interés supera el 100% |
+| Monto | Tasa  | Cuotas | Total Intereses                                   |
+|-------|-------|--------|---------------------------------------------------|
+| 50000 | 12.5% | 60     | Error: La tasa de interés supera la tasa de usura |
 
 ### Caso de prueba #5: cuota única
 
@@ -83,13 +79,30 @@ N = Número de cuotas
 |-------|------|--------|--------------------------------------------------|
 | 50000 | 1%   | -10    | Error: el número de cuotas debe ser mayor a cero |
 
-
 # Requisito #2
 
-Calcular el plan de amortización de la compra, dado el monto de la compra, el número de cuotas en que se difiere la tasa
-de interés.
+Calcular el plan de amortización de la compra, dado el monto de la compra, el número de cuotas y la tasa de interés.
 
 El plan de amortización es el abono que se hace a la deuda de cada cuota, divido entre abono a capital y abono a interés
+
+Para calcular que parte del pago de la cuota se va para abonar intereses y cuanto para abonar al capital tenemos las
+siguientes fórmulas:
+
+![formula abono intereses](assets/formula_abono_intereses.png)
+
+![formula abono capital](assets/formula_abono_capital.png)
+
+Donde:
+
+AI = Abono a intereses del mes
+
+SP = Saldo Pendiente
+
+I = Tasa de interés mensual
+
+AC = Abono a capital
+
+C = Cuota mensual
 
 ## Casos de prueba
 
@@ -119,7 +132,6 @@ Tabla amortización:
 
 | # Cuota | Cuota    | Pago Interés | Abono capital | Saldo      |
 |---------|----------|--------------|---------------|------------|
-| 1       | 9,297.96 | 6,200.00     | 3,097.96      | 196,902.04 |
 | 1       | 9,297.96 | 6,200.00     | 3,097.96      | 196,902.04 |
 | 2       | 9,297.96 | 6,103.96     | 3,194.00      | 193,708.05 |
 | 3       | 9,297.96 | 6,004.95     | 3,293.01      | 190,415.04 |
@@ -155,7 +167,7 @@ Tabla amortización:
 | 33      | 9,297.96 | 1,068.85     | 8,229.11      | 26,249.83  |
 | 34      | 9,297.96 | 813.74       | 8,484.21      | 17,765.61  |
 | 35      | 9,297.96 | 550.73       | 8,747.23      | 9,018.39   |
-| 36      | 9,297.96 | 279.57       | 9,018.39      | - 0.00     |
+| 36      | 9,297.96 | 279.57       | 9,018.39      | 0.00       |
 
 ### Caso de prueba #3: caso normal
 
@@ -192,7 +204,7 @@ Tabla amortización:
 | 21      | 52,377.50 | 6,556.71     | 45,820.79     | 147,023.50 | 
 | 22      | 52,377.50 | 4,998.80     | 47,378.70     | 99,644.80  | 
 | 23      | 52,377.50 | 3,387.92     | 48,989.58     | 50,655.22  | 
-| 24      | 52,377.50 | 1,722.28     | 50,655.22     | - 0.00     | 
+| 24      | 52,377.50 | 1,722.28     | 50,655.22     | 0.00       | 
 
 ### Caso de prueba #4: tasa cero
 
@@ -373,7 +385,7 @@ Tabla amortización:
 | 24      | 9,297.96  | 1,031.10     | 8,266.86      | 24,994.43  | 
 | 25      | 9,297.96  | 774.83       | 8,523.13      | 16,471.29  | 
 | 26      | 9,297.96  | 510.61       | 8,787.35      | 7,683.94   | 
-| 27      | 7,922.15  | 238.20       | 7,683.94      | -          | 
+| 27      | 7,922.15  | 238.20       | 7,683.94      | 0.0        | 
 
 ### Caso de prueba #2: caso normal
 
