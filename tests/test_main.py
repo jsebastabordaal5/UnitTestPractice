@@ -33,11 +33,30 @@ def test_caso_60_cuotas():
     assert total_interes == "!Error!: La tasa de interés supera la tasa de usura!"
 
 
-def test_caso_1_cuota():
+def test_caso_1_cuotas():
     tarjeta_de_credito: TarjetaDeCredito = TarjetaDeCredito(2.4, 200)
     compra: Compra = Compra(90000, 2.4, 1)
     tarjeta_de_credito.registrar_compra(compra)
     total_interes = tarjeta_de_credito.calcular_total_interes()
     assert total_interes == 0
+
+
+def test_caso_60_cuotas_2():
+    tarjeta_de_credito: TarjetaDeCredito = TarjetaDeCredito(2.4, 9800)
+    compra: Compra = Compra(0, 2.4, 60)
+    tarjeta_de_credito.registrar_compra(compra)
+    total_interes = tarjeta_de_credito.calcular_total_interes()
+    assert total_interes == "!Error!: el monto debe ser superior a cero"
+
+
+def test_caso_menos_10_cuotas_2():
+    tarjeta_de_credito: TarjetaDeCredito = TarjetaDeCredito(1, 40998)
+    compra: Compra = Compra(50000, 1, -10)
+    tarjeta_de_credito.registrar_compra(compra)
+    total_interes = tarjeta_de_credito.calcular_total_interes()
+    assert total_interes == "!Error!: el monto debe ser superior a cero"
+
+
+
 
 
