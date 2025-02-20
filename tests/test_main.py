@@ -4,7 +4,7 @@ from src.model.tarjeta_de_credito import TarjetaDeCredito
 from src.model.compra import Compra
 from src.model.errors import ErrorTasaUsura
 from src.model.errors import ErrorMonto
-from src.model.errors import ErrorCuota
+from src.model.errors import ErrorCuotaNegativa
 
 
 def test_caso_36_cuotas():
@@ -35,7 +35,7 @@ def test_caso_tasa_usura():
         compra: Compra = Compra(50000, 12.5, 60)
         tarjeta_de_credito.registrar_compra(compra)
         total_interes = tarjeta_de_credito.calcular_total_interes()
-        raise ErrorTasaUsura(12.5)
+        #raise ErrorTasaUsura(12.5)
 
 
 def test_caso_cuota_unica():
@@ -52,17 +52,17 @@ def test_caso_monto_invalido():
         compra: Compra = Compra(0, 2.4, 60)
         tarjeta_de_credito.registrar_compra(compra)
         total_interes = tarjeta_de_credito.calcular_total_interes()
-        raise ErrorMonto(0)
+        #raise ErrorMonto(0)
 
 
 
 def test_caso_cuota_negativa():
-    with pytest.raises(ErrorCuota):
+    with pytest.raises(ErrorCuotaNegativa):
         tarjeta_de_credito: TarjetaDeCredito = TarjetaDeCredito(1, 40998)
         compra: Compra = Compra(50000, 1, -10)
         tarjeta_de_credito.registrar_compra(compra)
         total_interes = tarjeta_de_credito.calcular_total_interes()
-        raise ErrorCuota(-10)
+        #raise ErrorCuotaNegativa(-10)
 
 
 

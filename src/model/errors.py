@@ -13,7 +13,7 @@ class ErrorMonto(Exception):
 
 
 
-class ErrorCuota(Exception):
+class ErrorCuotaNegativa(Exception):
     def __init__(self, numero_cuotas: int):
         super().__init__(f"El total de cuotas igual a: {numero_cuotas}, no es superior a cero!")
 
